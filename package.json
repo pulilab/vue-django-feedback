@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "dev": "poi",
+    "build": "poi build"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "poi": "^9.6.3"
+  },
+  "dependencies": {
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "vee-validate": "^2.0.0-rc.27",
+    "vue": "^2.5.13",
+    "vue-custom-element": "^2.0.0"
+  }
+}
