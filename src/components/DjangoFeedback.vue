@@ -1,9 +1,8 @@
 <template>
   <div class="vue-django-feedback main container right">
-    <button class="feedback-button" @click="togglePopUp()">
+    <button :class="['feedback-button', {opened}]" @click="togglePopUp()" >
       <i class="icon icon-closed" v-show="!opened"></i>
       <i class="icon icon-opened" v-show="opened"></i>
-      {{buttonText}}
     </button>
 
     <div class="pop-up-container" v-show="opened">
@@ -128,10 +127,6 @@
       name: String,
       email: String,
       avatarUrl: String,
-      buttonText: {
-        type: String,
-        default: '?'
-      },
       submitButtonText: {
         type: String,
         default: 'Submit'
