@@ -1,3 +1,19 @@
+// Text truncate
+// Requires inline-block or block for proper styling
+.text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clearfix() {
+  &::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}
+
 // --------------------------------------------------
 // Flexbox LESS mixins
 // https://gist.github.com/gyandeeps/c31f83e0eebf3a1c664cd5cc04cc9836
