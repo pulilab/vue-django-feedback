@@ -1,5 +1,5 @@
 <template>
-  <div class="main container">
+  <div class="vue-django-feedback main container right">
     <button class="feedback-button" @click="togglePopUp()">
       <i class="icon icon-closed" v-show="!opened"></i>
       <i class="icon icon-opened" v-show="opened"></i>
@@ -9,7 +9,7 @@
     <div class="pop-up-container" v-show="opened">
       <div class="header">
         <i class="icon icon-opened"></i>
-        <slot name="header-text">Ask our experts!</slot>
+        <h2><slot name="header-text">Ask our experts!</slot></h2>
       </div>
 
       <div class="form-container" v-show="!submitted">
@@ -114,7 +114,7 @@
       avatarUrl: String,
       buttonText: {
         type: String,
-        default: 'Open'
+        default: '?'
       },
       submitButtonText: {
         type: String,
@@ -180,4 +180,67 @@
 </script>
 
 <style lang="less">
+
+  @import '../style/variables.less';
+  @import '../style/mixins.less';
+
+  // TODO
+  // Remove
+  html {
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #F8F8F8;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  //
+
+  .feedback-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    min-width: @vdf-button-size;
+    min-height: @vdf-button-size;
+    width: @vdf-button-size;
+    height: @vdf-button-size;
+    background-color: @color-primary;
+    color: #FFFFFF;
+    border-radius: @vdf-button-size;
+    box-shadow:
+      0 0 6px 0 rgba(0,0,0,.12),
+      0 6px 12px 0 rgba(0,0,0,.24);
+  }
+
+  .pop-up-container {
+    position: absolute;
+    bottom: @vdf-button-size + 20px;
+    width: @vdf-width;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    box-shadow:
+      0 0 24px 0 rgba(0,0,0,.12),
+      0 24px 48px 0 rgba(0,0,0,.24);
+
+      .header {
+        .flex-display();
+        .flex-direction();
+        .align-items(center);
+        height: @vdf-button-size;
+        background-color: @color-primary;
+        color: #FFFFFF;
+
+        .icon-opened {}
+
+        h2 {}
+      }
+
+      .form-container {
+        padding: @vdf-padding;
+      }
+  }
+
 </style>

@@ -1,1 +1,68 @@
-// hello
+// --------------------------------------------------
+// Imports
+// --------------------------------------------------
+
+@import 'variables.less';
+@import 'mixins.less';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,500,500i,700,700i');
+
+
+// --------------------------------------------------
+// Resets
+// --------------------------------------------------
+
+button {
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-align: inherit;
+  font: inherit;
+  line-height: normal;
+
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+}
+
+
+// --------------------------------------------------
+// General
+// --------------------------------------------------
+
+.vue-django-feedback {
+  position: fixed;
+  bottom: 40px;
+  width: @vdf-button-size;
+  height: @vdf-button-size;
+  font-family: @vdf-font-family;
+  font-size: @vdf-base-font;
+  line-height: @vdf-line-height;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+
+  &.left   {
+    left: 40px;
+
+    .pop-up-container {
+      left: 0;
+    }
+  }
+
+  &.right  {
+    right: 40px;
+
+    .pop-up-container {
+      right: 0;
+    }
+  }
+}
