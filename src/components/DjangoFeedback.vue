@@ -32,10 +32,11 @@
           <input name="name"
                  v-model="form.name"
                  v-validate="{required: true}"
-                 :placeholder="nameLabel"
                  type="text">
-          <div>
-            <span v-show="errors.has('name')" class="error danger">{{ errors.first('name') }}</span>
+          <div class="feedback">
+            <div class="errors">
+              <span v-show="errors.has('name')" class="error danger">{{ errors.first('name') }}</span>
+            </div>
           </div>
         </div>
 
@@ -46,10 +47,11 @@
           <input name="email"
                  v-model="form.email"
                  v-validate="{required: true, email: true}"
-                 :placeholder="emailLabel"
                  type="email">
-          <div>
-            <span v-show="errors.has('email')" class="error danger">{{ errors.first('email') }}</span>
+          <div class="feedback">
+            <div class="errors">
+              <span v-show="errors.has('email')" class="error danger">{{ errors.first('email') }}</span>
+            </div>
           </div>
         </div>
 
@@ -60,11 +62,12 @@
           <input name="subject"
                  v-model="form.subject"
                  v-validate="{required: true, max: limit.subjectLimit}"
-                 type="text"
-                 :placeholder="subjectLabel">
-          <div>
-            <span class="char-count">{{form.subject.length}} / {{limit.subjectLimit}}</span>
-            <span v-show="errors.has('subject')" class="error danger">{{ errors.first('subject') }}</span>
+                 type="text">
+          <div class="feedback">
+            <div class="errors">
+              <span v-show="errors.has('subject')" class="error danger">{{ errors.first('subject') }}</span>
+            </div>
+            <div class="char-count">{{form.subject.length}} / {{limit.subjectLimit}}</div>
           </div>
         </div>
 
@@ -73,13 +76,15 @@
             {{messageLabel}}
           </label>
           <textarea name="message"
+                    rows="3"
                     v-model="form.message"
-                    v-validate="{required: true, max: limit.messageLimit}"
-                    :placeholder="messageLabel">
+                    v-validate="{required: true, max: limit.messageLimit}">
           </textarea>
-          <div>
-            <span class="char-count">{{form.message.length}} / {{limit.messageLimit}}</span>
-            <span v-show="errors.has('message')" class="error danger">{{ errors.first('message') }}</span>
+          <div class="feedback">
+            <div class="errors">
+              <span v-show="errors.has('message')" class="error danger">{{ errors.first('message') }}</span>
+            </div>
+            <div class="char-count">{{form.message.length}} / {{limit.messageLimit}}</div>
           </div>
         </div>
 
@@ -87,12 +92,14 @@
 
       <div class="pop-up-controls">
         <div class="error-info" v-show="errors.any()">
-          <i class="icon icon-danger"></i>
+          <i class="icon icon-danger"><span>!</span></i>
           {{globalErrorWarning}}
         </div>
-        <button @click="submit()">
-          {{submitButtonText}}
-        </button>
+        <div class="actions">
+          <button @click="submit()">
+            {{submitButtonText}}
+          </button>
+        </div>
       </div>
 
       <div class="message-container" v-show="submitted">
@@ -227,7 +234,9 @@
   .pop-up-container {
     position: absolute;
     bottom: @vdf-button-size + 20px;
+    overflow: scroll;
     width: @vdf-width;
+    max-height: calc(~"100vh - @{vdf-button-size} - @{vdf-padding} - 40px");
     background-color: #FFFFFF;
     border-radius: 5px;
     box-shadow:
@@ -235,11 +244,14 @@
       0 24px 48px 0 rgba(0,0,0,.24);
 
     .header {
+      position: fixed;
+      width: @vdf-width;
       .flex-display();
-      .flex-direction();
+      .flex-direction(row);
       .align-items(center);
       height: @vdf-button-size;
       padding: 0 20px;
+      box-sizing: border-box;
       background-color: @color-primary;
       border-radius: 5px 5px 0 0;
 
@@ -252,27 +264,116 @@
     }
 
     .form-container {
-      padding: @vdf-padding;
+      padding: (@vdf-padding + @vdf-button-size) @vdf-padding (@vdf-padding/2 + @vdf-button-size);
     }
 
     .input-container {
-      display: block;
+      .flex-display();
+      .flex-direction(column);
       margin-bottom: @vdf-padding / 2;
+    }
+  }
+
+  .pop-up-controls {
+    position: fixed;
+    bottom: @vdf-button-size + @vdf-padding + 20;
+    .flex-display();
+    .flex-direction(row);
+    .align-items(center);
+    .align-content(stretch);
+    .justify-content(space-between);
+    width: @vdf-width;
+    height: @vdf-button-size + 1;
+    padding: 0 @vdf-padding;
+    border-top: 1px solid @input-border;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 0 0 5px 5px;
+
+    .error-info {
+      padding-right: @vdf-padding;
+      color: @color-error;
+
+      .icon {
+        float: left;
+        margin-right: 5px;
+      }
+    }
+
+    .actions {
+      .flex-grow(1);
+      text-align: right;
+
+      button {
+        text-transform: uppercase;
+        color: @color-primary;
+      }
+    }
+  }
+
+  .input-container {
+    label {
+      margin-bottom: @vdf-padding / 5;
+      font-size: @vdf-base-font - 4;
+      color: @text-primary;
+    }
+
+    input {}
+    textarea {}
+
+    input,
+    textarea {
+      min-height: @vdf-line-height;
+      padding: 6px 8px;
+      font-size: @vdf-base-font;
+      color: @text-primary;
+      line-height: @vdf-line-height;
+      border: 1px solid @input-border;
+      border-radius: 3px;
+      transition: border-color 250ms ease;
+
+      &:hover,
+      &:focus {
+        border-color: @text-disabled;
+      }
+
+      &.error {
+        border-color: @color-error;
+      }
+    }
+
+    .feedback {
+      .flex-display();
+      .flex-direction(row);
+      margin-top: @vdf-padding / 5;
+      font-size: @vdf-base-font - 5;
+      line-height: 1.5;
+      color: @text-disabled;
+
+      .char-count {
+        padding-left: @vdf-padding;
+        white-space: nowrap;
+      }
+
+      .errors {
+        width: 100%;
+        color: @color-error;
+      }
     }
   }
 
   .icon.icon-opened {
     position: relative;
-    width: 21px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 
     > span {
       z-index: 3;
       position: relative;
       display: block;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 500;
-      line-height: 21px;
+      line-height: 24px;
       color: @color-primary;
       font-style: normal;
       text-align: center;
@@ -285,8 +386,8 @@
       top: 0;
       left: 0;
       display: inline-block;
-      width: 21px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       background-color: #FFFFFF;
       border-radius: 2px;
     }
@@ -297,15 +398,45 @@
       position: absolute;
       top: 100%;
       left: 50%;
-      margin-left: -7px;
+      margin-left: -5px;
       width: 0;
     	height: 0;
-    	border-left: 6px solid transparent;
-    	border-right: 6px solid transparent;
+    	border-left: 5px solid transparent;
+    	border-right: 5px solid transparent;
     	border-top: 5px solid #FFFFFF;
     }
   }
 
-  .icon.icon-opened  {}
+  .icon.icon-danger {
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    > span {
+      z-index: 3;
+      position: relative;
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 24px;
+      color: #FFFFFF;
+      font-style: normal;
+      text-align: center;
+    }
+
+    &::before {
+      content: "";
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+    	height: 0;
+      margin-left: -11px;
+    	border-left: 11px solid transparent;
+    	border-right: 11px solid transparent;
+    	border-bottom: 18px solid @color-error;
+    }
+  }
 
 </style>

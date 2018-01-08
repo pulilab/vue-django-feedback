@@ -12,6 +12,34 @@
 // Resets
 // --------------------------------------------------
 
+input,
+label,
+select,
+textarea {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	display: inline-block;
+	vertical-align: middle;
+	white-space: normal;
+	background: none;
+	line-height: 1;
+  -webkit-appearance: none;
+}
+
+textarea {
+	vertical-align:top;
+	overflow: auto;
+  resize: none;
+}
+
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+  outline: 0;
+}
+
 button {
   overflow: visible;
   margin: 0;
@@ -23,6 +51,7 @@ button {
   text-align: inherit;
   font: inherit;
   line-height: normal;
+  cursor: pointer;
 
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
@@ -34,11 +63,6 @@ button {
   }
 }
 
-label {
-  margin: 0;
-  padding: 0;
-}
-
 
 // --------------------------------------------------
 // General
@@ -46,18 +70,19 @@ label {
 
 .vue-django-feedback {
   position: fixed;
-  bottom: 40px;
+  bottom: @vdf-padding;
   width: @vdf-button-size;
   height: @vdf-button-size;
   font-family: @vdf-font-family;
   font-size: @vdf-base-font;
   line-height: @vdf-line-height;
   font-style: normal;
+  color: @text-primary;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
 
   &.left   {
-    left: 40px;
+    left: @vdf-padding;
 
     .pop-up-container {
       left: 0;
@@ -65,7 +90,7 @@ label {
   }
 
   &.right  {
-    right: 40px;
+    right: @vdf-padding;
 
     .pop-up-container {
       right: 0;
