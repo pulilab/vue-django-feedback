@@ -298,6 +298,7 @@
         padding: 0 10px;
         font-size: @vdf-base-font + 4;
         font-weight: 500;
+        letter-spacing: 0.5px;
         color: #FFFFFF;
       }
     }
@@ -331,6 +332,7 @@
 
     .error-info {
       padding-right: @vdf-padding;
+      font-weight: 500;
       color: @color-error;
 
       .icon {
@@ -346,6 +348,11 @@
       button {
         text-transform: uppercase;
         color: @color-primary;
+        transition: color 350ms @ease-out;
+
+        &:hover {
+          color: lighten(@color-primary, 10%);
+        }
       }
     }
   }
@@ -459,8 +466,8 @@
     > span {
       position: relative;
       display: block;
-      font-size: 24px;
-      font-weight: 300;
+      font-size: 26px;
+      font-weight: 400;
       line-height: 24px;
       color: #FFFFFF;
       font-style: normal;
@@ -479,7 +486,7 @@
       position: relative;
       display: block;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 24px;
       color: #FFFFFF;
       font-style: normal;

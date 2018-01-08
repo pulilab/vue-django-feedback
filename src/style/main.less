@@ -5,7 +5,7 @@
 @import 'variables.less';
 @import 'mixins.less';
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,500,500i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
 
 
 // --------------------------------------------------
@@ -20,6 +20,7 @@ textarea {
 	border: 0;
 	padding: 0;
 	display: inline-block;
+  font-weight: 400;
 	vertical-align: middle;
 	white-space: normal;
 	background: none;
@@ -40,6 +41,10 @@ textarea:focus {
   outline: 0;
 }
 
+label {
+  font-weight: 500;
+}
+
 button {
   overflow: visible;
   margin: 0;
@@ -50,6 +55,7 @@ button {
   color: inherit;
   text-align: inherit;
   font: inherit;
+  font-weight: 500;
   line-height: normal;
   cursor: pointer;
 
@@ -75,6 +81,7 @@ button {
   height: @vdf-button-size;
   font-family: @vdf-font-family;
   font-size: @vdf-base-font;
+  font-weight: 400;
   line-height: @vdf-line-height;
   font-style: normal;
   color: @text-primary;
