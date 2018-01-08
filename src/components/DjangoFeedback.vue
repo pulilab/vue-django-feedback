@@ -1,8 +1,8 @@
 <template>
   <div class="vue-django-feedback main container right">
     <button :class="['feedback-button', {opened}]" @click="togglePopUp()" >
-      <i class="icon icon-closed" v-show="!opened"></i>
-      <i class="icon icon-opened" v-show="opened"></i>
+      <i class="icon icon-closed"><span>&times</span></i>
+      <i class="icon icon-opened"><span>?</span></i>
     </button>
 
     <div class="pop-up-container" v-show="opened">
@@ -210,23 +210,67 @@
   //
 
   .feedback-button {
+    z-index: 11000;
     position: absolute;
     top: 0;
     left: 0;
+    overflow: hidden;
     display: block;
     min-width: @vdf-button-size;
     min-height: @vdf-button-size;
     width: @vdf-button-size;
     height: @vdf-button-size;
     background-color: @color-primary;
+    text-align: center;
     color: #FFFFFF;
     border-radius: @vdf-button-size;
     box-shadow:
       0 0 6px 0 rgba(0,0,0,.12),
       0 6px 12px 0 rgba(0,0,0,.24);
+    transition: all 350ms @ease-out;
+
+    &:hover {
+      box-shadow:
+        0 0 12px 0 rgba(0,0,0,.12),
+        0 6px 24px 0 rgba(0,0,0,.24);
+      transform: scale3d(1.15,1.15,1);
+    }
+
+    .icon.icon-opened,
+    .icon.icon-closed {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -12px 0 0 -12px;
+
+      > span,
+      &::before, &::after {
+        transform: translate3d(0,0,0);
+      }
+    }
+
+    .icon.icon-closed {
+      transform: scale3d(0,0,1);
+    }
+
+    &.opened {
+      .icon-opened {
+        > span {
+          transform: translate3d(0, -@vdf-button-size, 0);
+        }
+        &::before, &::after {
+          transform: translate3d(0, @vdf-button-size, 0);
+        }
+      }
+
+      .icon-closed {
+        transform: scale3d(1,1,1);
+      }
+    }
   }
 
   .pop-up-container {
+    z-index: 10000;
     position: absolute;
     bottom: @vdf-button-size + 20px;
     overflow: scroll;
@@ -325,7 +369,7 @@
       line-height: @vdf-line-height;
       border: 1px solid @input-border;
       border-radius: 3px;
-      transition: border-color 250ms ease;
+      transition: border-color 350ms @ease-out;
 
       &:hover,
       &:focus {
@@ -363,7 +407,7 @@
     height: 24px;
 
     > span {
-      z-index: 3;
+      z-index: 11003;
       position: relative;
       display: block;
       font-size: 20px;
@@ -372,11 +416,12 @@
       color: @color-primary;
       font-style: normal;
       text-align: center;
+      transition: all 350ms @ease-bounce;
     }
 
     &::before {
       content: "";
-      z-index: 2;
+      z-index: 11002;
       position: absolute;
       top: 0;
       left: 0;
@@ -385,20 +430,42 @@
       height: 24px;
       background-color: #FFFFFF;
       border-radius: 2px;
+      transition: all 350ms @ease-bounce;
     }
 
     &::after {
       content: "";
-      z-index: 1;
+      z-index: 11001;
       position: absolute;
       top: 100%;
       left: 50%;
+      margin-top: -1px;
       margin-left: -5px;
       width: 0;
     	height: 0;
     	border-left: 5px solid transparent;
     	border-right: 5px solid transparent;
-    	border-top: 5px solid #FFFFFF;
+    	border-top: 6px solid #FFFFFF;
+      transition: all 350ms @ease-bounce;
+    }
+  }
+
+  .icon.icon-closed {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    transition: all 350ms @ease-bounce;
+
+    > span {
+      position: relative;
+      display: block;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 24px;
+      color: #FFFFFF;
+      font-style: normal;
+      text-align: center;
+      transition: all 350ms @ease-bounce;
     }
   }
 
