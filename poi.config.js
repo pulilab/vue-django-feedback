@@ -1,7 +1,6 @@
 module.exports = (options, req) => ({
   entry: './src/index.js',
   vendor: false,
-  extractCSS: true,
   filename: {
     js: 'django-feedback.js',
     css: 'style.css',
