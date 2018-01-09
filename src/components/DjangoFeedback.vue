@@ -1,11 +1,11 @@
 <template>
-  <div class="vue-django-feedback main container right">
-    <button :class="['feedback-button', {opened}]" @click="togglePopUp()" >
+  <div :class="['vue-django-feedback', 'main', 'container', 'right', {opened}]">
+    <button class="feedback-button" @click="togglePopUp()" >
       <i class="icon icon-closed"><span>&times</span></i>
       <i class="icon icon-opened"><span>?</span></i>
     </button>
 
-    <div class="pop-up-container" v-show="opened">
+    <div class="pop-up-container">
       <div class="header">
         <i class="icon icon-opened"><span>?</span></i>
         <h2><slot name="header-text">Ask our experts!</slot></h2>
@@ -89,10 +89,8 @@
 
       </div>
 
-      <!-- TODO -->
-      <!-- hide this when form is submitted -->
 
-      <div class="pop-up-controls">
+      <div class="pop-up-controls" v-show="!submitted">
         <div class="error-info" v-show="errors.any()">
           <i class="icon icon-danger"><span>!</span></i>
           {{globalErrorWarning}}
