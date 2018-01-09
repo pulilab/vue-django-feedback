@@ -93,14 +93,14 @@
 
 
       <div class="pop-up-controls" v-show="!submitted">
+      <div class="actions">
+        <button @click="submit()">
+          {{submitButtonText}}
+        </button>
+      </div>
         <div class="error-info" v-show="errors.any()">
           <i class="icon icon-danger"><span>!</span></i>
           {{globalErrorWarning}}
-        </div>
-        <div class="actions">
-          <button @click="submit()">
-            {{submitButtonText}}
-          </button>
         </div>
       </div>
 
@@ -336,7 +336,7 @@
     border-radius: 0 0 5px 5px;
 
     .error-info {
-      padding-right: @vdf-padding;
+      padding-left: @vdf-padding;
       font-weight: 500;
       color: @color-error;
 
@@ -348,7 +348,6 @@
 
     .actions {
       .flex-grow(1);
-      text-align: right;
 
       button {
         text-transform: uppercase;
@@ -570,9 +569,9 @@
     display: inline-block;
     width: 32px;
     height: 32px;
-    background-color: #757575;
+    background-color: @avatar-placeholder;
     border-radius: 32px;
-    border: calc(32px/8) solid #757575;
+    border: calc(32px/8) solid @avatar-placeholder;
     box-sizing: content-box;
 
     &::before {
