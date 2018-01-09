@@ -201,19 +201,6 @@
   @import '../style/variables.less';
   @import '../style/mixins.less';
 
-  // TODO
-  // Remove
-  html {
-    min-width: 100%;
-    min-height: 100%;
-    background-color: #F8F8F8;
-  }
-
-  body {
-    width: 100%;
-    height: 100%;
-  }
-  //
 
   .feedback-button {
     z-index: 11000;
