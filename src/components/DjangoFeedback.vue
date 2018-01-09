@@ -311,6 +311,7 @@
       h4 {
         margin: 0;
         font-size: @vdf-base-font + 4;
+        color: @color-success;
       }
 
       p {
