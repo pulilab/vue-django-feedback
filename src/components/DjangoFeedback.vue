@@ -89,6 +89,9 @@
 
       </div>
 
+      <!-- TODO -->
+      <!-- hide this when form is submitted -->
+
       <div class="pop-up-controls">
         <div class="error-info" v-show="errors.any()">
           <i class="icon icon-danger"><span>!</span></i>
@@ -311,6 +314,19 @@
       .flex-display();
       .flex-direction(column);
       margin-bottom: @vdf-padding / 2;
+    }
+
+    .message-container {
+      padding: (@vdf-padding + @vdf-button-size) @vdf-padding @vdf-padding;
+
+      h4 {
+        margin: 0;
+        font-size: @vdf-base-font + 4;
+      }
+
+      p {
+        color: @text-secondary;
+      }
     }
   }
 
