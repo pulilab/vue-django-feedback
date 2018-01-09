@@ -267,7 +267,7 @@
     overflow: scroll;
     width: @vdf-width;
     max-height: calc(~"100vh - @{vdf-button-size} - @{vdf-padding} - 40px");
-    background-color: #FFFFFF;
+    background-color: @dialog-bg;
     border-radius: 5px;
     box-shadow:
       0 0 24px 0 rgba(0,0,0,.12),
@@ -332,7 +332,7 @@
     height: @vdf-button-size + 1;
     padding: 0 @vdf-padding;
     border-top: 1px solid @input-border;
-    background-color: #FFFFFF;
+    background-color: @dialog-bg;
     box-sizing: border-box;
     border-radius: 0 0 5px 5px;
 
