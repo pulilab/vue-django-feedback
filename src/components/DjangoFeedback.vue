@@ -104,9 +104,6 @@
         </div>
       </div>
 
-      <!-- TODO -->
-      <!-- Reset the form after closing the popup -->
-
       <div class="message-container" v-show="submitted">
         <h4>
           <slot name="success-header">
@@ -185,6 +182,14 @@
     methods: {
       togglePopUp () {
         this.opened = !this.opened;
+        if (!this.opened) {
+          this.form.name = '';
+          this.form.email = '';
+          this.form.subject = '';
+          this.form.message = '';
+          this.submitted = false;
+        }
+        this.errors.clear();
       },
       async submit () {
         await this.$validator.validateAll();
