@@ -86,19 +86,45 @@ button {
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
 
-  &.left   {
+  &.left {
     left: @vdf-padding;
 
     .pop-up-container {
       left: 0;
+      transform: translate3d(@vdf-offset-,0,0);
     }
   }
 
-  &.right  {
+  &.right {
     right: @vdf-padding;
 
     .pop-up-container {
       right: 0;
+      transform: translate3d(@vdf-offset,0,0);
+    }
+  }
+
+  &.opened {
+    .feedback-button {
+      .icon-opened {
+        > span {
+          transform: translate3d(0, -@vdf-button-size, 0);
+        }
+        &::before, &::after {
+          transform: translate3d(0, @vdf-button-size, 0);
+        }
+      }
+
+      .icon-closed {
+        transform: scale3d(1,1,1);
+      }
+    }
+
+    &.left,
+    &.right {
+      .pop-up-container {
+        transform: translate3d(0,0,0);
+      }
     }
   }
 }

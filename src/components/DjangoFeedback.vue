@@ -13,12 +13,14 @@
 
       <div class="form-container" v-show="!submitted">
 
-        <div class="user-block">
-          <img class="avatar" :src="avatarUrl" v-if="!showAvatarPlaceholder" alt="avatar">
-          <div class="avatar-placeholder" v-show="showAvatarPlaceholder">
-            <i class="icon icon-avatar"></i>
+        <div class="user-block" v-show="showUserBlock">
+          <div class="avatar">
+            <img class="avatar-img" :src="avatarUrl" v-if="!showAvatarPlaceholder" alt="avatar">
+            <div class="avatar-placeholder" v-show="showAvatarPlaceholder">
+              <i class="icon icon-avatar"></i>
+            </div>
           </div>
-          <div>
+          <div class="user">
             <span class="name">{{name}}</span>
             <span class="email">{{email}}</span>
           </div>
@@ -101,6 +103,9 @@
           </button>
         </div>
       </div>
+
+      <!-- TODO -->
+      <!-- Reset the form after closing the popup -->
 
       <div class="message-container" v-show="submitted">
         <h4>
@@ -253,21 +258,6 @@
     .icon.icon-closed {
       transform: scale3d(0,0,1);
     }
-
-    &.opened {
-      .icon-opened {
-        > span {
-          transform: translate3d(0, -@vdf-button-size, 0);
-        }
-        &::before, &::after {
-          transform: translate3d(0, @vdf-button-size, 0);
-        }
-      }
-
-      .icon-closed {
-        transform: scale3d(1,1,1);
-      }
-    }
   }
 
   .pop-up-container {
@@ -282,6 +272,7 @@
     box-shadow:
       0 0 24px 0 rgba(0,0,0,.12),
       0 24px 48px 0 rgba(0,0,0,.24);
+    transition: all 1000ms @ease-out;
 
     .header {
       position: fixed;
@@ -330,7 +321,7 @@
 
   .pop-up-controls {
     position: fixed;
-    bottom: @vdf-button-size + @vdf-padding + 20;
+    bottom: 0;
     .flex-display();
     .flex-direction(row);
     .align-items(center);
@@ -418,6 +409,58 @@
       .errors {
         width: 100%;
         color: @color-error;
+      }
+    }
+  }
+
+  .user-block {
+    .flex-display();
+    .flex-direction(row);
+    margin-bottom: @vdf-padding;
+
+    .avatar {
+      position: relative;
+      overflow: hidden;
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+
+      .avatar-img {
+        z-index: 12001;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        float: left;
+        width: 100%;
+        height: 100%;
+        border-radius: 40px;
+        box-shadow: 0 0 0 1px #FFFFFF;
+      }
+      .avatar-placeholder {
+        z-index: 12000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 40px;
+      }
+    }
+
+    .user {
+      padding: 0 (@vdf-padding / 3);
+
+      .name {
+        display: block;
+        font-weight: 500;
+      }
+
+      .email {
+        display: block;
+        font-size: @vdf-base-font - 4;
+        line-height: 16px;
+        color: @text-secondary;
       }
     }
   }
@@ -519,6 +562,49 @@
     	border-left: 11px solid transparent;
     	border-right: 11px solid transparent;
     	border-bottom: 18px solid @color-error;
+    }
+  }
+
+  .icon.icon-avatar {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: #757575;
+    border-radius: 32px;
+    border: calc(32px/8) solid #757575;
+    box-sizing: content-box;
+
+    &::before {
+      content:"";
+      position: absolute;
+      top: 0;
+      bottom: calc(30px * -1);
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: calc(30px / 1.1);
+      height: calc(30px / 1.1);
+      background: rgba(0,0,0,0);
+      border-radius: 30%;
+      border: calc(30px/6) solid transparent;
+      border-top: calc(30px / 3) solid #FFFFFF;
+      box-sizing: border-box;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: calc(30px / 2.25);
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: calc(30px / 2.5);
+      height: calc(30px / 2.5);
+      background-color: #FFFFFF;
+      border-radius: 100%;
+      box-sizing: border-box;
     }
   }
 
