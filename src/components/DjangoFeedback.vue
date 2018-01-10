@@ -225,7 +225,7 @@
     box-shadow:
       0 0 6px 0 rgba(0,0,0,.12),
       0 6px 12px 0 rgba(0,0,0,.24);
-    transition: all 350ms @ease-out;
+    transition: all 350ms @ease-in-out;
 
     &:hover {
       box-shadow:
@@ -264,7 +264,7 @@
     box-shadow:
       0 0 24px 0 rgba(0,0,0,.12),
       0 24px 48px 0 rgba(0,0,0,.24);
-    transition: all 1000ms @ease-out;
+    transition: all 700ms @ease-in-out;
 
     .header {
       position: fixed;
@@ -345,7 +345,7 @@
       button {
         text-transform: uppercase;
         color: @color-primary;
-        transition: color 350ms @ease-out;
+        transition: color 350ms @ease-in-out;
 
         &:hover {
           color: lighten(@color-primary, 10%);
@@ -373,7 +373,7 @@
       line-height: @vdf-line-height;
       border: 1px solid @input-border;
       border-radius: 3px;
-      transition: border-color 350ms @ease-out;
+      transition: border-color 350ms @ease-in-out;
 
       &:hover,
       &:focus {
