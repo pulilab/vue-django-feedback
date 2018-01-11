@@ -91,16 +91,16 @@
 
       </div>
 
-
       <div class="pop-up-controls" v-show="!submitted">
-      <div class="actions">
-        <button @click="submit()">
-          {{submitButtonText}}
-        </button>
-      </div>
-        <div class="error-info" v-show="errors.any()">
-          <i class="icon icon-danger"><span>!</span></i>
-          {{globalErrorWarning}}
+        <div class="actions">
+          <button @click="submit()">
+            {{submitButtonText}}
+          </button>
+        </div>
+          <div class="error-info" v-show="errors.any()">
+            <i class="icon icon-danger"><span>!</span></i>
+            {{globalErrorWarning}}
+          </div>
         </div>
       </div>
 
@@ -313,7 +313,7 @@
   }
 
   .pop-up-controls {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     .flex-display();
     .flex-direction(row);
