@@ -267,7 +267,9 @@
     transition: all 1000ms @ease-in-out;
 
     .header {
-      position: fixed;
+      z-index: 12000;
+      position: sticky;
+      top: 0;
       width: @vdf-width;
       .flex-display();
       .flex-direction(row);
@@ -288,7 +290,7 @@
     }
 
     .form-container {
-      padding: (@vdf-padding + @vdf-button-size) @vdf-padding @vdf-padding/2;
+      padding: @vdf-padding @vdf-padding @vdf-padding/2;
     }
 
     .input-container {
@@ -418,7 +420,7 @@
       border-radius: 40px;
 
       .avatar-img {
-        z-index: 12001;
+        z-index: 10001;
         position: absolute;
         top: 0;
         left: 0;
@@ -430,7 +432,7 @@
         box-shadow: 0 0 0 1px #FFFFFF;
       }
       .avatar-placeholder {
-        z-index: 12000;
+        z-index: 10002;
         position: absolute;
         top: 0;
         left: 0;
