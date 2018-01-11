@@ -288,7 +288,7 @@
     }
 
     .form-container {
-      padding: (@vdf-padding + @vdf-button-size) @vdf-padding (@vdf-padding/2 + @vdf-button-size);
+      padding: (@vdf-padding + @vdf-button-size) @vdf-padding @vdf-padding/2;
     }
 
     .input-container {
