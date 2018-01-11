@@ -264,7 +264,7 @@
     box-shadow:
       0 0 24px 0 rgba(0,0,0,.12),
       0 24px 48px 0 rgba(0,0,0,.24);
-    transition: all 700ms @ease-in-out;
+    transition: all 1000ms @ease-in-out;
 
     .header {
       position: fixed;
