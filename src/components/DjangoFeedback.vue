@@ -121,7 +121,7 @@
 </template>
 
 <script>
-
+  import axios from 'axios';
   export default {
     name: 'django-feedback',
     props: {
@@ -192,6 +192,7 @@
       async submit () {
         await this.$validator.validateAll();
         if (!this.errors.any()) {
+          // await axios.post();
           this.submitted = true;
         }
       }
