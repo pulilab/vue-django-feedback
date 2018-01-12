@@ -116,6 +116,20 @@
           </slot>
         </p>
       </div>
+
+      <div class="message-container" v-show="apiError">
+        <h4 class="error">
+          <slot name="error-header">
+            Sorry
+          </slot>
+        </h4>
+        <p>
+          <slot name="error-message">
+            There was a problem processing your ticket,
+            please try again
+          </slot>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -125,6 +139,10 @@
   export default {
     name: 'django-feedback',
     props: {
+      apiUrl: {
+        type: String,
+        default: '/api/tickets/'
+      },
       name: String,
       email: String,
       avatarUrl: String,
@@ -157,6 +175,7 @@
       return {
         opened: false,
         submitted: false,
+        apiError: false,
         form: {
           name: '',
           email: '',
@@ -186,14 +205,29 @@
           this.form.subject = '';
           this.form.message = '';
           this.submitted = false;
+          this.apiError = false;
         }
         this.errors.clear();
       },
       async submit () {
         await this.$validator.validateAll();
         if (!this.errors.any()) {
-          // await axios.post();
-          this.submitted = true;
+          try {
+            const data = {
+              email: this.email ? this.email : this.form.email,
+              subject: this.form.subject,
+              text: this.form.message,
+              meta: {
+                name: this.name ? this.name : this.form.name
+              }
+            };
+            await axios.post(this.apiUrl, data);
+            this.submitted = true;
+            this.apiError = false;
+          } catch (e) {
+            this.apiError = true;
+            console.warn(e);
+          }
         }
       }
     }
