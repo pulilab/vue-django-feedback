@@ -102,7 +102,6 @@
             {{globalErrorWarning}}
           </div>
         </div>
-      </div>
 
       <div class="message-container" v-show="submitted">
         <h4>
@@ -122,7 +121,6 @@
 </template>
 
 <script>
-  import '../style/main.less';
 
   export default {
     name: 'django-feedback',
@@ -202,10 +200,7 @@
 </script>
 
 <style lang="less">
-
-  @import '../style/variables.less';
-  @import '../style/mixins.less';
-
+  @import '../style/main.less';
 
   .feedback-button {
     z-index: 11000;
@@ -256,7 +251,7 @@
     z-index: 10000;
     position: absolute;
     bottom: @vdf-button-size + 20px;
-    overflow: scroll;
+    overflow: auto;
     width: @vdf-width;
     max-height: calc(~"100vh - @{vdf-button-size} - @{vdf-padding} - 40px");
     background-color: @dialog-bg;
