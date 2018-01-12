@@ -1,4 +1,5 @@
 {
+  "license": "MIT",
   "author": {
     "name": "Pulilab",
     "email": "hosting@pulilab.com",
@@ -10,7 +11,7 @@
   "main": "dist/django-feedback.js",
   "scripts": {
     "dev": "poi",
-    "build": "poi build"
+    "build": "rm -r dist/* && poi build && mkdir -p dist/styles  && cp -r ./src/style/ dist/styles"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.3",
@@ -31,9 +32,11 @@
     "vue": "^2.5.13",
     "vue-custom-element": "^2.0.0"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/pulilab/vue-django-feedback.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pulilab/vue-django-feedback.git"
   },
-  "files": ["dist"]
+  "files": [
+    "dist"
+  ]
 }
