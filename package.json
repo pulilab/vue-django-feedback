@@ -1,4 +1,13 @@
 {
+  "author": {
+    "name": "Pulilab",
+    "email": "hosting@pulilab.com",
+    "website": "http://www.pulilab.com"
+  },
+  "name": "vue-django-feedback",
+  "version": "1.0",
+  "description": "A standard web component based on VueJs desgined to communicate with django ticketing interface (PuliWoof for friends)",
+  "main": "src/index.js",
   "scripts": {
     "dev": "poi",
     "build": "poi build"
@@ -21,5 +30,10 @@
     "vee-validate": "^2.0.0-rc.27",
     "vue": "^2.5.13",
     "vue-custom-element": "^2.0.0"
+  },
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "https://github.com/pulilab/vue-django-feedback.git"
   }
 }
