@@ -185,7 +185,8 @@ button {
   z-index: 10000;
   position: absolute;
   bottom: @vdf-button-size + 20px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: @vdf-width;
   max-height: calc(~"100vh - @{vdf-button-size} - @{vdf-padding} - 40px");
   background-color: @dialog-bg;
