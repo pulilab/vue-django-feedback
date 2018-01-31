@@ -2,8 +2,8 @@ module.exports = (options, req) => ({
   entry: './src/index.js',
   vendor: false,
   sourceMap: false,
-  html: false,
-  format: 'cjs',
+  html: options.mode === 'production' ? false : undefined,
+  format: options.mode === 'production' ? 'cjs' : undefined,
   filename: {
     js: 'django-feedback.js',
     css: 'django-feedback.css',
