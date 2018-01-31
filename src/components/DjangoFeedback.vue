@@ -143,6 +143,10 @@
         type: String,
         default: '/api/tickets/'
       },
+      authToken: {
+        type: String,
+        default: ''
+      },
       name: String,
       email: String,
       avatarUrl: String,
@@ -221,7 +225,10 @@
                 name: this.name ? this.name : this.form.name
               }
             };
-            await axios.post(this.apiUrl, data);
+            if (this.authToken.length > 0) {
+              this.axios.defaults.headers.common.Authorization = this.authToken;
+            }
+            await this.axios.post(this.apiUrl, data);
             this.submitted = true;
             this.apiError = false;
           } catch (e) {
@@ -230,6 +237,9 @@
           }
         }
       }
+    },
+    mounted () {
+      this.axios = axios.create();
     }
   };
 </script>
