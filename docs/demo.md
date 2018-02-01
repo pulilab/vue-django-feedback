@@ -5,7 +5,11 @@
 
 <script v-pre type="text/x-template" id="anon">
   <template>
-      <vue-django-feedback :name="name" :email="email"></vue-django-feedback>
+      <vue-django-feedback :name="name" :email="email">
+          <span vue-slot="header-text">
+            Feel free to complain
+          </span>
+      </vue-django-feedback>
   </template>
 
   <script>

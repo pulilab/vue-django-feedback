@@ -1,12 +1,11 @@
 - Getting Started
   - [Quick Start](quickstart)
-  - [Configuration](configuration)
   - [Demo](demo)
 
-
-- Style
- - [Theming](theming)
-
+- Configuration
+  - [Props](props)
+  - [Slots](slots)
+  - [Theming](theming)
 
 - Contribute
   - [Development](development)
