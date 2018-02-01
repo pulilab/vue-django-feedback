@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import vueCustomElement from 'vue-custom-element';
 import VeeValidate from 'vee-validate';
-import DjangoFeedback from './components/DjangoFeedback';
+import VueDjangoFeedback from './components/VueDjangoFeedback';
 
 Vue.use(vueCustomElement);
 Vue.use(VeeValidate);
 
-Vue.customElement('django-feedback', DjangoFeedback);
+Vue.customElement('vue-django-feedback', VueDjangoFeedback);

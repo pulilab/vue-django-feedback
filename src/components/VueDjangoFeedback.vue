@@ -137,7 +137,10 @@
 <script>
   import axios from 'axios';
   export default {
-    name: 'django-feedback',
+    name: 'vue-django-feedback',
+    beforeCreate () {
+      this.axios = axios.create();
+    },
     props: {
       apiUrl: {
         type: String,
@@ -146,6 +149,10 @@
       authToken: {
         type: String,
         default: ''
+      },
+      meta: {
+        type: String,
+        default: undefined
       },
       name: String,
       email: String,
@@ -198,6 +205,16 @@
       },
       showAvatarPlaceholder () {
         return !this.avatarUrl;
+      },
+      parsedMeta () {
+        let result = {};
+        try {
+          result = JSON.parse(this.meta);
+        }
+        catch (e) {
+          console.warn('unable to parse the meta field', e);
+        }
+        return result;
       }
     },
     methods: {
@@ -222,12 +239,10 @@
               subject: this.form.subject,
               text: this.form.message,
               meta: {
+                ...this.parsedMeta,
                 name: this.name ? this.name : this.form.name
               }
             };
-            if (this.authToken.length > 0) {
-              this.axios.defaults.headers.common.Authorization = this.authToken;
-            }
             await this.axios.post(this.apiUrl, data);
             this.submitted = true;
             this.apiError = false;
@@ -238,8 +253,15 @@
         }
       }
     },
-    mounted () {
-      this.axios = axios.create();
+    watch: {
+      authToken: {
+        immediate: true,
+        handler (value) {
+          if (value && value.length > 0) {
+            this.axios.defaults.headers.common.Authorization = value;
+          }
+        }
+      }
     }
   };
 </script>
