@@ -8,7 +8,7 @@
   "name": "vue-django-feedback",
   "version": "1.1.0",
   "description": "A standard web component based on VueJs designed to communicate with django ticketing interface (PuliWoof for friends)",
-  "main": "dist/django-feedback.js",
+  "main": "dist/vue-django-feedback.js",
   "scripts": {
     "dev": "poi",
     "build": "rm -r dist/* && yarn build-packaged && yarn build-lib && yarn copy-less",
