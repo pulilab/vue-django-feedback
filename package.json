@@ -7,7 +7,7 @@
   },
   "name": "vue-django-feedback",
   "version": "1.2.2",
-  "description": "A standard web component based on VueJs designed to communicate with django ticketing interface (PuliWoof for friends)",
+  "description": "A standard web component based on VueJs designed to communicate with django-simple-feedback",
   "main": "dist/vue-django-feedback.js",
   "scripts": {
     "dev": "poi",

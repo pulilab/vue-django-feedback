@@ -1,5 +1,7 @@
 # Demo
-> The button is optimized to be located a the bottom right corner of the page
+> The button is optimized to be located at the bottom right corner of the page
+
+>This is an interactive demo, it's possible to change the code in the black box and the button will update.
 
 <vuep template="#anon"></vuep>
 
