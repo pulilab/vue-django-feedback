@@ -6,9 +6,14 @@
     "website": "http://www.pulilab.com"
   },
   "name": "vue-django-feedback",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A standard web component based on VueJs designed to communicate with django-simple-feedback",
-  "keywords": ["vuejs", "feedback form", "django", "web-component"],
+  "keywords": [
+    "vuejs",
+    "feedback form",
+    "django",
+    "web-component"
+  ],
   "main": "dist/vue-django-feedback.js",
   "scripts": {
     "dev": "poi",
