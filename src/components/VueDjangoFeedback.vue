@@ -93,7 +93,7 @@
 
       <div class="pop-up-controls" v-show="!submitted">
         <div class="actions">
-          <button @click="submit()">
+          <button @click="submit()" :disabled="processing">
             {{submitButtonText}}
           </button>
         </div>
@@ -187,6 +187,7 @@
         opened: false,
         submitted: false,
         apiError: false,
+        processing: false,
         form: {
           name: '',
           email: '',
@@ -233,6 +234,7 @@
       async submit () {
         await this.$validator.validateAll();
         if (!this.errors.any()) {
+          this.processing = true;
           try {
             const data = {
               email: this.email ? this.email : this.form.email,
@@ -250,6 +252,7 @@
             this.apiError = true;
             console.warn(e);
           }
+          this.processing = false;
         }
       }
     },
