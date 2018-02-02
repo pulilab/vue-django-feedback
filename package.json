@@ -6,7 +6,7 @@
     "website": "http://www.pulilab.com"
   },
   "name": "vue-django-feedback",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A standard web component based on VueJs designed to communicate with django ticketing interface (PuliWoof for friends)",
   "main": "dist/vue-django-feedback.js",
   "scripts": {
