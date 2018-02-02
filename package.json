@@ -8,6 +8,7 @@
   "name": "vue-django-feedback",
   "version": "1.2.2",
   "description": "A standard web component based on VueJs designed to communicate with django-simple-feedback",
+  "keywords": ["vuejs", "feedback form", "django", "web-component"],
   "main": "dist/vue-django-feedback.js",
   "scripts": {
     "dev": "poi",
