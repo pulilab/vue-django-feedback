@@ -1,5 +1,5 @@
 # vue-django-feedback
-  > A feedback web component written in Vue.js to be paired with [puli-woof](https://github.com/pulilab/puli-woof)
+  > A feedback web component written in Vue.js to be paired with [django-simple-feedback](https://github.com/pulilab/django-simple-feedback)
 
   > See the [docs](https://pulilab.github.io/vue-django-feedback/#/) for more information
 
