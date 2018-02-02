@@ -6,9 +6,5 @@
   - Lightweight (10k not gzipped)
   - Modular not enforced CSS
   - Less source files rich in variables
-  - Integrates out of the box with puli-woof
+  - Integrates out of the box with django-simple-feedback
   - It's a web component so just drop it in and it will work in any framework.
-
-
-## Docs
-> Coming soon!
