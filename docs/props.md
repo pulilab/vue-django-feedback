@@ -1,6 +1,6 @@
 # Props:
 
-> Most of the configuration is done through props but several named slots are used as well
+> Most of the configuration is done through props, but several named slots are used as well.
 
 ## apiUrl
 - Type: `String`
