@@ -5,7 +5,7 @@
 - Configuration
   - [Props](props)
   - [Slots](slots)
-  - [Theming](theming)
+  - [Themes](themes)
 
 - Contribute
   - [Development](development)
