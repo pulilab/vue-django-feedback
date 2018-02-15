@@ -12,7 +12,7 @@ yarn add vue-django-feedback
 
 ### Integration
 
-> vue-django-feedback is a web component so you only need to import the js files and optionally the css and then you can just write the html markup anywhere
+> vue-django-feedback is a web component, where only the js files and optionally the css need to be imported and after the html markup can be written anywhere.
 
 #### Required JS
 ```javascript
@@ -39,7 +39,7 @@ or in your html
 ```
 
 #### Optional CSS
-> vue-django-feedback style is written in a simple modular LESS that uses variables theming, the standard style is also precompiled in css
+> vue-django-feedback style is written in a simple modular, LESS, which uses variable theming, the standard style is also precompiled in css
 
 Import the standard style
 
