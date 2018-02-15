@@ -39,7 +39,7 @@ or in your html
 ```
 
 #### Optional CSS
-> vue-django-feedback style is written in a simple modular, LESS, which uses variable theming, the standard style is also precompiled in css
+> vue-django-feedback style is written in a simple modular, LESS, which uses variable themes, the standard style is also precompiled in css
 
 Import the standard style
 
