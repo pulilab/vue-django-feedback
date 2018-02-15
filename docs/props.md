@@ -1,12 +1,12 @@
 # Props:
 
-> Most of the configuration is done trough props but several named slot are used as well
+> Most of the configuration is done through props but several named slots are used as well
 
 ## apiUrl
 - Type: `String`
 - Default: `/api/tickets/`
 
-Define the url where the component should post the submitted form, it is configured to work out of the box with django-simple-feedback
+Define the url where the component should post the submitted form. It is configured to work out of the box with django-simple-feedback
 
 ```html
 <vue-django-feedback api-url="my_own_url"></vue-django-feedback>
@@ -16,7 +16,7 @@ Define the url where the component should post the submitted form, it is configu
 - Type: `String`
 - Default: `''`
 
-If present the component will append an `Authorization`  header to the POST request contains the token passed to the prop
+If present, the component will append an `Authorization`  header to the POST request containing the token passed to the prop
 
 ```html
 <vue-django-feedback auth-token="my_token"></vue-django-feedback>
@@ -27,9 +27,9 @@ If present the component will append an `Authorization`  header to the POST requ
 - Type: `String`
 - Default: `''`
 
-This prop if present gets passed first to `JSON.parse()` and then sent in the request to the backend in the meta slot, if an invalid `Object` is passed a safe error is raised in the console
+This prop, if present, first gets passed to `JSON.parse()` and then sent to the request in the backend to the meta slot. If an invalid `Object` is passed, a safe error is raised in the console.
 
-!> This props needs a valid Object or Array
+!> These props need a valid Object or Array
 
 ```html
 <vue-django-feedback meta='{"key": "value"}'></vue-django-feedback>
@@ -40,7 +40,7 @@ This prop if present gets passed first to `JSON.parse()` and then sent in the re
 - Type: `String`
 - Default: `undefined`
 
-This represents the name of the logged in user, if this and the email props are present the UI switch to Authenticated version go to the [Demo](demo) for more clarity
+This represents the name of the logged in user, if this and the email props are present, the UI will switch to the Authenticated version. Visit the [Demo](demo) for further explanation.
 
 ```html
 <vue-django-feedback name="My name!"></vue-django-feedback>
@@ -50,7 +50,7 @@ This represents the name of the logged in user, if this and the email props are 
 - Type: `String`
 - Default: `undefined`
 
-This represents the email of the logged in user, if this and the name props are present the UI switch to Authenticated version go to the [Demo](demo) for more clarity
+This represents the email of the logged in user, if this and the name props are present, the UI will switch to the Authenticated version. Visit the [Demo](demo) for further explanation.
 
 ```html
 <vue-django-feedback email="vue@pulilab.com"></vue-django-feedback>
@@ -60,9 +60,9 @@ This represents the email of the logged in user, if this and the name props are 
 - Type: `String`
 - Default: `undefined`
 
-Url to display an optional avatar / pic for the user, if not present a placeholder image is shown
+Url to display an optional avatar / pic for the user, if not present a placeholder image is shown.
 
-!> The avatar picture is shown only if the <strong>name</strong> and <strong>email</strong> props are not `null` not `empty` and yes not `undefined` as well
+!> The avatar picture is shown only if the <strong>name</strong> and <strong>email</strong> props are not `null` not `empty` and also not `undefined` as well.
 
 
 ```html
