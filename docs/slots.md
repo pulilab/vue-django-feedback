@@ -1,6 +1,6 @@
 # Slots:
 
-> To be able to configure longer message section of the form several named slot are implemented
+> In order to be able to configure a longer message section of the form, several named slots are implemented:
 
 !> Due to the web-component nature of vue-django-feedback slot must be named `vue-slot="slot_name"`
 
