@@ -10,6 +10,8 @@
 // Resets
 // --------------------------------------------------
 vue-django-feedback {
+  // Do not remove this scaffolding block, otherwise the style rese leak to all the page
+
   input,
   label,
   select,
@@ -178,6 +180,13 @@ vue-django-feedback {
 
     .icon.icon-closed {
       transform: scale3d(0,0,1);
+    }
+  }
+
+  .hint-container {
+    display: none;
+    &.open {
+      display: block;
     }
   }
 

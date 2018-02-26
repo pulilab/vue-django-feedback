@@ -1,9 +1,20 @@
 <template>
   <div :class="['vue-django-feedback', 'main', 'container', 'right', {opened}]">
-    <button class="feedback-button" @click="togglePopUp()" >
-      <i class="icon icon-closed"><span>&times</span></i>
+    <button class="feedback-button"
+            @click="togglePopUp()"
+            v-on:mouseenter="handleMouseOver(true)"
+            v-on:mouseleave="handleMouseOver(false)">
+      <i class="icon icon-closed"><span>&times;</span></i>
       <i class="icon icon-opened"><span>?</span></i>
     </button>
+
+    <div :class="['hint-container', {open: showHintContainer}]">
+      <p>
+        <slot name="hint-text">
+          Click here if you are experiencing any issues or have suggestion for improving the website!
+        </slot>
+      </p>
+    </div>
 
     <div class="pop-up-container">
       <div class="header">
@@ -190,6 +201,7 @@
         submitted: false,
         apiError: false,
         processing: false,
+        buttonHover: false,
         form: {
           name: '',
           email: '',
@@ -218,6 +230,9 @@
           console.warn('unable to parse the meta field', e);
         }
         return result;
+      },
+      showHintContainer () {
+        return this.buttonHover && !this.opened;
       }
     },
     methods: {
@@ -256,6 +271,9 @@
           }
           this.processing = false;
         }
+      },
+      handleMouseOver (status) {
+        this.buttonHover = status;
       }
     },
     watch: {
