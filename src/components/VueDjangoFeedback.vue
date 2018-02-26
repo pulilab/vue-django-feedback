@@ -9,11 +9,13 @@
     </button>
 
     <div :class="['hint-container', {open: showHintContainer}]">
-      <p>
-        <slot name="hint-text">
-          Click here if you are experiencing any issues or have suggestion for improving the website!
-        </slot>
-      </p>
+      <div>
+        <div>
+          <slot name="hint-text">
+            Click here if you are experiencing any issues or have suggestion for improving the website!
+          </slot>
+        </div>
+      </div>
     </div>
 
     <div class="pop-up-container">
