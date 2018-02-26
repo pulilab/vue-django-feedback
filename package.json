@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "document-register-element": "^1.7.2",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "vee-validate": "^2.0.0-rc.27",
