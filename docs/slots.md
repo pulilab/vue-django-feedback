@@ -86,3 +86,21 @@ Change the default error message markup to anything present in the slot, more co
   </span>
 </vue-django-feedback>
 ```
+
+
+## hint-text
+
+```html
+<!-- Default -->
+Click here if you are experiencing any issues or have suggestion for improving the website!
+```
+
+Change the default hint message markup to anything present in the slot, more complex structures can be inserted as well.
+
+```html
+<vue-django-feedback>
+  <span vue-slot="hint-text">
+    Click here if you would like to send a 'meh' to us
+  </span>
+</vue-django-feedback>
+```

@@ -9,7 +9,10 @@
 // --------------------------------------------------
 // Resets
 // --------------------------------------------------
+
 vue-django-feedback {
+  // Do not remove this scaffolding block, otherwise the style reset leak to all the page
+
   input,
   label,
   select,
@@ -93,6 +96,24 @@ vue-django-feedback {
 
     &.left {
       left: @vdf-padding;
+
+      .hint-container {
+        right: auto;
+        left: @vdf-button-size + 30px;
+        transform: translate3d(-20px,0,0);
+
+        &::after {
+          right: auto;
+          left: -10px;
+          border-left: 0;
+        	border-right: 10px solid #FFFFFF;
+          filter: drop-shadow(-6px 0 4px rgba(0,0,0,.24));
+        }
+
+        &.open {
+          transform: translate3d(0,0,0);
+        }
+      }
 
       .pop-up-container {
         left: 0;
@@ -178,6 +199,59 @@ vue-django-feedback {
 
     .icon.icon-closed {
       transform: scale3d(0,0,1);
+    }
+  }
+
+  .hint-container {
+    opacity: 0;
+    z-index: 0;
+    position: absolute;
+    bottom: 0;
+    right: @vdf-button-size + 30px;
+    .flex-display();
+    .align-content(center);
+    .align-items(center);
+    pointer-events: none;
+    box-sizing: border-box;
+    // TODO
+    width: 280px;
+    // width: auto;
+    max-width: calc(~"100vh - @{vdf-button-size} - @{vdf-padding} - 50px");
+    min-height: @vdf-button-size;
+    padding: 10px 16px;
+    background-color: #FFFFFF;
+    border-left: 4px solid @color-warning;
+    border-radius: 4px;
+    box-shadow:
+      0 0 12px 0 rgba(0,0,0,.12),
+      0 6px 24px 0 rgba(0,0,0,.24);
+    transform: translate3d(20px,0,0);
+    transition: all 500ms @ease-in-out;
+
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 11002;
+      right: -10px;
+      bottom: 17px;
+      width: 0;
+    	height: 0;
+    	border-top: 10px solid transparent;
+    	border-left: 10px solid #FFFFFF;
+    	border-bottom: 10px solid transparent;
+      filter: drop-shadow(6px 0 4px rgba(0,0,0,.24));
+    }
+
+    > div {
+      font-size: @vdf-base-font - 4;
+      line-height: 1.5;
+    }
+
+    &.open {
+      opacity: 1;
+      z-index: 11001;
+      transform: translate3d(0,0,0);
     }
   }
 
