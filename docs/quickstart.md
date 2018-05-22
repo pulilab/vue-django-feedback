@@ -52,5 +52,5 @@ require('vue-django-feedback/dist/vue-django-feedback.css');
 Or directly in HTML
 
 ```html
-<link rel="stylesheet" href="NODE_MODULE_FOLDER/vue-django-feedback/dist/style.css">
+<link rel="stylesheet" href="NODE_MODULE_FOLDER/vue-django-feedback/dist/vue-django-feedback.css">
 ```
