@@ -44,9 +44,9 @@ or in your html
 Import the standard style
 
 ```javascript
-import 'vue-django-feedback/dist/style.css';
+import 'vue-django-feedback/dist/vue-django-feedback.css';
 or
-require('vue-django-feedback//dist/style.css');
+require('vue-django-feedback/dist/vue-django-feedback.css');
 ```
 
 Or directly in HTML
