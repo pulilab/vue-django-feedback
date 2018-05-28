@@ -272,7 +272,16 @@ export default {
       } catch (e) {
         console.warn('unable to parse the meta field', e);
       }
-      return result;
+      return {
+        ...result,
+        navigator: {
+          userAgent: window.navigator.userAgent,
+          platform: window.navigator.platform,
+          appVersion: window.navigator.appVersion,
+          product: window.navigator.product,
+          vendor: window.navigator.vendor
+        }
+      };
     },
     showHintContainer () {
       return this.buttonHover && !this.opened;

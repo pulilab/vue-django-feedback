@@ -8,7 +8,7 @@ module.exports = (options, req) => {
 
   const dev = {
     devServer: {
-      proxy: 'http://localhost/api'
+      proxy: 'http://localhost:8000/api'
     }
   };
 
