@@ -1,9 +1,10 @@
 <template>
   <div :class="['vue-django-feedback', 'main', 'container', 'right', {opened}]">
-    <button class="feedback-button"
-            @click="togglePopUp()"
-            v-on:mouseenter="handleMouseOver(true)"
-            v-on:mouseleave="handleMouseOver(false)">
+    <button
+      class="feedback-button"
+      @click="togglePopUp()"
+      @mouseenter="handleMouseOver(true)"
+      @mouseleave="handleMouseOver(false)">
       <i class="icon icon-closed"><span>&times;</span></i>
       <i class="icon icon-opened"><span>?</span></i>
     </button>
@@ -24,99 +25,132 @@
         <h2><slot name="header-text">Ask our experts!</slot></h2>
       </div>
 
-      <div class="form-container" v-show="!submitted">
+      <div
+        v-show="!submitted"
+        class="form-container">
 
-        <div class="user-block" v-show="showUserBlock">
+        <div
+          v-show="showUserBlock"
+          class="user-block">
           <div class="avatar">
-            <img class="avatar-img" :src="avatarUrl" v-if="!showAvatarPlaceholder" alt="avatar">
-            <div class="avatar-placeholder" v-show="showAvatarPlaceholder">
-              <i class="icon icon-avatar"></i>
+            <img
+              v-if="!showAvatarPlaceholder"
+              :src="avatarUrl"
+              class="avatar-img"
+              alt="avatar">
+            <div
+              v-show="showAvatarPlaceholder"
+              class="avatar-placeholder">
+              <i class="icon icon-avatar"/>
             </div>
           </div>
           <div class="user">
-            <span class="name">{{name}}</span>
-            <span class="email">{{email}}</span>
+            <span class="name">{{ name }}</span>
+            <span class="email">{{ email }}</span>
           </div>
         </div>
 
-        <div :class="['input-container', 'input', 'name', {danger: errors.has('name')}]" v-if="!showUserBlock">
+        <div
+          v-if="!showUserBlock"
+          :class="['input-container', 'input', 'name', {danger: errors.has('name')}]">
           <label>
-            {{nameLabel}}
+            {{ nameLabel }}
           </label>
-          <input name="name"
-                 v-model="form.name"
-                 v-validate="{required: true}"
-                 type="text">
+          <input
+            v-validate="{required: true}"
+            v-model="form.name"
+            name="name"
+            type="text">
           <div class="feedback">
             <div class="errors">
-              <span v-show="errors.has('name')" class="error danger">{{ errors.first('name') }}</span>
+              <span
+                v-show="errors.has('name')"
+                class="error danger">{{ errors.first('name') }}</span>
             </div>
           </div>
         </div>
 
-        <div :class="['input-container', 'input', 'email', {danger: errors.has('email')}]" v-if="!showUserBlock">
+        <div
+          v-if="!showUserBlock"
+          :class="['input-container', 'input', 'email', {danger: errors.has('email')}]">
           <label>
-            {{emailLabel}}
+            {{ emailLabel }}
           </label>
-          <input name="email"
-                 v-model="form.email"
-                 v-validate="{required: true, email: true}"
-                 type="email">
+          <input
+            v-validate="{required: true, email: true}"
+            v-model="form.email"
+            name="email"
+            type="email">
           <div class="feedback">
             <div class="errors">
-              <span v-show="errors.has('email')" class="error danger">{{ errors.first('email') }}</span>
+              <span
+                v-show="errors.has('email')"
+                class="error danger">{{ errors.first('email') }}</span>
             </div>
           </div>
         </div>
 
         <div :class="['input-container', 'input', 'subject', {danger: errors.has('subject')}]">
           <label>
-            {{subjectLabel}}
+            {{ subjectLabel }}
           </label>
-          <input name="subject"
-                 v-model="form.subject"
-                 v-validate="{required: true, max: limit.subjectLimit}"
-                 type="text">
+          <input
+            v-validate="{required: true, max: limit.subjectLimit}"
+            v-model="form.subject"
+            name="subject"
+            type="text">
           <div class="feedback">
             <div class="errors">
-              <span v-show="errors.has('subject')" class="error danger">{{ errors.first('subject') }}</span>
+              <span
+                v-show="errors.has('subject')"
+                class="error danger">{{ errors.first('subject') }}</span>
             </div>
-            <div class="char-count">{{form.subject.length}} / {{limit.subjectLimit}}</div>
+            <div class="char-count">{{ form.subject.length }} / {{ limit.subjectLimit }}</div>
           </div>
         </div>
 
         <div :class="['input-container', 'textarea', 'message', {danger: errors.has('message')}]">
           <label>
-            {{messageLabel}}
+            {{ messageLabel }}
           </label>
-          <textarea name="message"
-                    rows="3"
-                    v-model="form.message"
-                    v-validate="{required: true, max: limit.messageLimit}">
-          </textarea>
+          <textarea
+            v-validate="{required: true, max: limit.messageLimit}"
+            v-model="form.message"
+            name="message"
+            rows="3"/>
           <div class="feedback">
             <div class="errors">
-              <span v-show="errors.has('message')" class="error danger">{{ errors.first('message') }}</span>
+              <span
+                v-show="errors.has('message')"
+                class="error danger">{{ errors.first('message') }}</span>
             </div>
-            <div class="char-count">{{form.message.length}} / {{limit.messageLimit}}</div>
+            <div class="char-count">{{ form.message.length }} / {{ limit.messageLimit }}</div>
           </div>
         </div>
 
       </div>
 
-      <div class="pop-up-controls" v-show="!submitted">
+      <div
+        v-show="!submitted"
+        class="pop-up-controls">
         <div class="actions">
-          <button @click="submit()" :disabled="processing">
-            {{submitButtonText}}
+          <button
+            :disabled="processing"
+            @click="submit()">
+            {{ submitButtonText }}
           </button>
         </div>
-          <div class="error-info" v-show="errors.any()">
-            <i class="icon icon-danger"><span>!</span></i>
-            {{globalErrorWarning}}
-          </div>
+        <div
+          v-show="errors.any()"
+          class="error-info">
+          <i class="icon icon-danger"><span>!</span></i>
+          {{ globalErrorWarning }}
         </div>
+      </div>
 
-      <div class="message-container" v-show="submitted">
+      <div
+        v-show="submitted"
+        class="message-container">
         <h4>
           <slot name="success-header">
             Thank you!
@@ -130,7 +164,9 @@
         </p>
       </div>
 
-      <div class="message-container" v-show="apiError">
+      <div
+        v-show="apiError"
+        class="message-container">
         <h4 class="error">
           <slot name="error-header">
             Sorry
@@ -148,147 +184,155 @@
 </template>
 
 <script>
-  import axios from 'axios';
-  import 'document-register-element/build/document-register-element';
+import axios from 'axios';
+import 'document-register-element/build/document-register-element';
 
-  export default {
-    name: 'vue-django-feedback',
-    beforeCreate () {
-      this.axios = axios.create();
+export default {
+  name: 'VueDjangoFeedback',
+  props: {
+    apiUrl: {
+      type: String,
+      default: '/api/tickets/'
     },
-    props: {
-      apiUrl: {
-        type: String,
-        default: '/api/tickets/'
+    authToken: {
+      type: String,
+      default: ''
+    },
+    meta: {
+      type: String,
+      default: undefined
+    },
+    name: {
+      type: String,
+      default: null
+    },
+    email: {
+      type: String,
+      default: null
+    },
+    avatarUrl: {
+      type: String,
+      default: null
+    },
+    submitButtonText: {
+      type: String,
+      default: 'Submit'
+    },
+    globalErrorWarning: {
+      type: String,
+      default: 'Error!'
+    },
+    nameLabel: {
+      type: String,
+      default: 'Your name'
+    },
+    emailLabel: {
+      type: String,
+      default: 'Your email'
+    },
+    subjectLabel: {
+      type: String,
+      default: 'Subject'
+    },
+    messageLabel: {
+      type: String,
+      default: 'Message / Question'
+    }
+  },
+  data () {
+    return {
+      opened: false,
+      submitted: false,
+      apiError: false,
+      processing: false,
+      buttonHover: false,
+      form: {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
       },
-      authToken: {
-        type: String,
-        default: ''
-      },
-      meta: {
-        type: String,
-        default: undefined
-      },
-      name: String,
-      email: String,
-      avatarUrl: String,
-      submitButtonText: {
-        type: String,
-        default: 'Submit'
-      },
-      globalErrorWarning: {
-        type: String,
-        default: 'Error!'
-      },
-      nameLabel: {
-        type: String,
-        default: 'Your name'
-      },
-      emailLabel: {
-        type: String,
-        default: 'Your email'
-      },
-      subjectLabel: {
-        type: String,
-        default: 'Subject'
-      },
-      messageLabel: {
-        type: String,
-        default: 'Message / Question'
+      limit: {
+        subjectLimit: 120,
+        messageLimit: 999
       }
+    };
+  },
+  computed: {
+    showUserBlock () {
+      return !!(this.name && this.email);
     },
-    data () {
-      return {
-        opened: false,
-        submitted: false,
-        apiError: false,
-        processing: false,
-        buttonHover: false,
-        form: {
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        },
-        limit: {
-          subjectLimit: 120,
-          messageLimit: 999
-        }
-      };
+    showAvatarPlaceholder () {
+      return !this.avatarUrl;
     },
-    computed: {
-      showUserBlock () {
-        return !!(this.name && this.email);
-      },
-      showAvatarPlaceholder () {
-        return !this.avatarUrl;
-      },
-      parsedMeta () {
-        let result = {};
-        try {
-          result = JSON.parse(this.meta);
-        }
-        catch (e) {
-          console.warn('unable to parse the meta field', e);
-        }
-        return result;
-      },
-      showHintContainer () {
-        return this.buttonHover && !this.opened;
+    parsedMeta () {
+      let result = {};
+      try {
+        result = JSON.parse(this.meta);
+      } catch (e) {
+        console.warn('unable to parse the meta field', e);
       }
+      return result;
     },
-    methods: {
-      togglePopUp () {
-        this.opened = !this.opened;
-        if (!this.opened) {
-          this.form.name = '';
-          this.form.email = '';
-          this.form.subject = '';
-          this.form.message = '';
-          this.submitted = false;
-          this.apiError = false;
-        }
-        this.errors.clear();
-      },
-      async submit () {
-        await this.$validator.validateAll();
-        if (!this.errors.any()) {
-          this.processing = true;
-          try {
-            const data = {
-              email: this.email ? this.email : this.form.email,
-              subject: this.form.subject,
-              text: this.form.message,
-              meta: {
-                ...this.parsedMeta,
-                name: this.name ? this.name : this.form.name
-              }
-            };
-            await this.axios.post(this.apiUrl, data);
-            this.submitted = true;
-            this.apiError = false;
-          } catch (e) {
-            this.apiError = true;
-            console.warn(e);
-          }
-          this.processing = false;
-        }
-      },
-      handleMouseOver (status) {
-        this.buttonHover = status;
-      }
-    },
-    watch: {
-      authToken: {
-        immediate: true,
-        handler (value) {
-          if (value && value.length > 0) {
-            this.axios.defaults.headers.common.Authorization = value;
-          }
+    showHintContainer () {
+      return this.buttonHover && !this.opened;
+    }
+  },
+  watch: {
+    authToken: {
+      immediate: true,
+      handler (value) {
+        if (value && value.length > 0) {
+          this.axios.defaults.headers.common.Authorization = value;
         }
       }
     }
-  };
+  },
+  beforeCreate () {
+    this.axios = axios.create();
+  },
+  methods: {
+    togglePopUp () {
+      this.opened = !this.opened;
+      if (!this.opened) {
+        this.form.name = '';
+        this.form.email = '';
+        this.form.subject = '';
+        this.form.message = '';
+        this.submitted = false;
+        this.apiError = false;
+      }
+      this.errors.clear();
+    },
+    async submit () {
+      await this.$validator.validateAll();
+      if (!this.errors.any()) {
+        this.processing = true;
+        try {
+          const data = {
+            email: this.email ? this.email : this.form.email,
+            subject: this.form.subject,
+            text: this.form.message,
+            meta: {
+              ...this.parsedMeta,
+              name: this.name ? this.name : this.form.name
+            }
+          };
+          await this.axios.post(this.apiUrl, data);
+          this.submitted = true;
+          this.apiError = false;
+        } catch (e) {
+          this.apiError = true;
+          console.warn(e);
+        }
+        this.processing = false;
+      }
+    },
+    handleMouseOver (status) {
+      this.buttonHover = status;
+    }
+  }
+};
 </script>
 
 <style lang="less">
