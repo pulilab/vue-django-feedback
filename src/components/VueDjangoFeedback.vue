@@ -198,6 +198,10 @@ export default {
       type: String,
       default: ''
     },
+    csrfToken: {
+      type: String,
+      default: ''
+    },
     meta: {
       type: String,
       default: undefined
@@ -293,6 +297,14 @@ export default {
       handler (value) {
         if (value && value.length > 0) {
           this.axios.defaults.headers.common.Authorization = value;
+        }
+      }
+    },
+    csrfToken: {
+      immediate: true,
+      handler (value) {
+        if (value && value.length > 0) {
+          this.axios.defaults.headers.common['x-csrftoken'] = value;
         }
       }
     }
