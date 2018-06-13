@@ -1,8 +1,9 @@
-# Props:
+# Props
 
 > Most of the configuration is done through props, but several named slots are used as well.
 
 ## apiUrl
+
 - Type: `String`
 - Default: `/api/tickets/`
 
@@ -13,6 +14,7 @@ Define the url where the component should post the submitted form. It is configu
 ```
 
 ## authToken
+
 - Type: `String`
 - Default: `''`
 
@@ -22,8 +24,19 @@ If present, the component will append an `Authorization`  header to the POST req
 <vue-django-feedback auth-token="my_token"></vue-django-feedback>
 ```
 
+## csrfToken
+
+- Type: `String`
+- Default: `''`
+
+If present, the component will append an `x-csrftoken`  header to the POST request containing the token passed to the prop
+
+```html
+<vue-django-feedback csrf-token="my_token"></vue-django-feedback>
+```
 
 ## meta
+
 - Type: `String`
 - Default: `''`
 
@@ -35,8 +48,8 @@ This prop, if present, first gets passed to `JSON.parse()` and then sent to the 
 <vue-django-feedback meta='{"key": "value"}'></vue-django-feedback>
 ```
 
-
 ## name
+
 - Type: `String`
 - Default: `undefined`
 
@@ -47,6 +60,7 @@ This represents the name of the logged in user, if this and the email props are 
 ```
 
 ## email
+
 - Type: `String`
 - Default: `undefined`
 
@@ -57,13 +71,13 @@ This represents the email of the logged in user, if this and the name props are 
 ```
 
 ## avatarUrl
+
 - Type: `String`
 - Default: `undefined`
 
 Url to display an optional avatar / pic for the user, if not present a placeholder image is shown.
 
 !> The avatar picture is shown only if the <strong>name</strong> and <strong>email</strong> props are not `null` not `empty` and also not `undefined` as well.
-
 
 ```html
 <vue-django-feedback
@@ -74,6 +88,7 @@ Url to display an optional avatar / pic for the user, if not present a placehold
 ```
 
 ## submitButtonText
+
 - Type: `String`
 - Default: `'Submit'`
 
@@ -84,6 +99,7 @@ Text of the submit button.
 ```
 
 ## globalErrorWarning
+
 - Type: `String`
 - Default: `'Error!'`
 
@@ -94,6 +110,7 @@ Text of the submit error warning displayed in the left bottom corner when an err
 ```
 
 ## nameLabel
+
 - Type: `String`
 - Default: `'Your name'`
 
@@ -104,6 +121,7 @@ Value of the label for the name input field
 ```
 
 ## emailLabel
+
 - Type: `String`
 - Default: `'Your email'`
 
@@ -114,6 +132,7 @@ Value of the label for the email input field
 ```
 
 ## subjectLabel
+
 - Type: `String`
 - Default: `'Subject'`
 
@@ -124,6 +143,7 @@ Value of the label for the subject input field
 ```
 
 ## messageLabel
+
 - Type: `String`
 - Default: `'Subject'`
 
