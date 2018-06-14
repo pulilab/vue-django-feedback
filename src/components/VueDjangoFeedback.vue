@@ -196,11 +196,11 @@ export default {
     },
     authToken: {
       type: String,
-      default: ''
+      default: null
     },
     csrfToken: {
       type: String,
-      default: ''
+      default: null
     },
     meta: {
       type: String,
@@ -291,24 +291,6 @@ export default {
       return this.buttonHover && !this.opened;
     }
   },
-  watch: {
-    authToken: {
-      immediate: true,
-      handler (value) {
-        if (value && value.length > 0) {
-          this.axios.defaults.headers.common.Authorization = value;
-        }
-      }
-    },
-    csrfToken: {
-      immediate: true,
-      handler (value) {
-        if (value && value.length > 0) {
-          this.axios.defaults.headers.common['x-csrftoken'] = value;
-        }
-      }
-    }
-  },
   beforeCreate () {
     this.axios = axios.create();
   },
@@ -339,7 +321,14 @@ export default {
               name: this.name ? this.name : this.form.name
             }
           };
-          await this.axios.post(this.apiUrl, data);
+          const headers = {};
+          if (this.authToken) {
+            headers.Authorization = this.authToken;
+          }
+          if (this.csrfToken) {
+            headers['x-csrftoken'] = this.csrfToken;
+          }
+          await this.axios.post(this.apiUrl, data, {headers});
           this.submitted = true;
           this.apiError = false;
         } catch (e) {
